@@ -20,13 +20,13 @@
         </el-form-item>
       </el-form>
       <div>
-        <el-button type="primary" @click="submitForm" :loading="loading">确认提币</el-button>
+        <el-button type="primary" @click="submitForm" v-loading="loading">确认提币</el-button>
         <el-button @click="addAddress">添加地址</el-button>
       </div>
     </div>
     <div class="manually-down">
       <el-table
-        :loading="loading"
+        v-loading="loading"
         :data="transactionData.list"
         style="width: 100%">
         <el-table-column
@@ -138,6 +138,7 @@
           this.loading = false
         }).catch((err) => {
           this.$message.error(err)
+          this.loading = false
         })
       },
       submitForm() {

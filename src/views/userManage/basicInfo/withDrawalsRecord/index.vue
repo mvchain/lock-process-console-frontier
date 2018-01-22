@@ -1,6 +1,6 @@
 <template>
   <div>
-    <recharge-record :keyWord="$route.query.id" :typeId="typeId"></recharge-record>
+    <recharge-record :keyWord="String($route.query.id)" :typeId="typeId"></recharge-record>
   </div>
 </template>
 
@@ -13,7 +13,6 @@
     },
     data() {
       return {
-        loading: false,
         pageNo: 1,
         pageSize: 10,
         typeId: '1'

@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-table
-      :loading="loading"
+      v-loading="loading"
       :data="transactionData.list"
       style="width: 100%">
       <el-table-column
@@ -50,7 +50,7 @@
   export default {
     name: 'rechargeRecord',
     props: {
-      keyWord: Number,
+      keyWord: String,
       typeId: String
     },
     data() {
@@ -79,6 +79,7 @@
           this.loading = false
         }).catch((err) => {
           this.$message.error(err)
+          this.loading = false
         })
       }
     }

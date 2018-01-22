@@ -2,7 +2,7 @@
   <div class="user-manage">
     <el-table
       :data="pageListData.list"
-      :loading="loading"
+      v-loading="loading"
       style="width: 100%">
       <el-table-column
         prop="id"
@@ -102,6 +102,7 @@
           this.loading = false
         }).catch((err) => {
           this.$message.error(err)
+          this.loading = false
         })
       }
     },

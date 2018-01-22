@@ -3,7 +3,7 @@
     <div style="margin:20px 0 0 20px;">
       中心钱包余额：{{dataList.balanceStr}}{{type}}
     </div>
-    <el-row>
+    <el-row v-loading="loading">
       <el-col :span="12">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
@@ -13,13 +13,13 @@
             <el-col :span="12" class="box-left">
               金额
             </el-col>
-            <el-col :span="12" class="box-right">{{dataList.withdraw.quantityStr}}</el-col>
+            <el-col :span="12" class="box-right">{{dataList.deposite&&dataList.withdraw.quantityStr}}</el-col>
           </div>
           <div>
             <el-col :span="12" class="box-left">
               提币总单数
             </el-col>
-            <el-col :span="12" class="box-right">{{dataList.withdraw.num}}</el-col>
+            <el-col :span="12" class="box-right">{{dataList.deposite&&dataList.withdraw.num}}</el-col>
           </div>
         </el-card>
       </el-col>
@@ -32,13 +32,13 @@
             <el-col :span="12" class="box-left">
               金额
             </el-col>
-            <el-col :span="12" class="box-right">{{dataList.deposite.quantityStr}}</el-col>
+            <el-col :span="12" class="box-right">{{dataList.deposite&&dataList.deposite.quantityStr}}</el-col>
           </div>
           <div>
             <el-col :span="12" class="box-left">
               提币总单数
             </el-col>
-            <el-col :span="12" class="box-right">{{dataList.deposite.num}}</el-col>
+            <el-col :span="12" class="box-right">{{dataList.deposite&&dataList.deposite.num}}</el-col>
           </div>
         </el-card>
       </el-col>
@@ -51,39 +51,39 @@
             <el-col :span="4" class="">
               总锁仓金额
             </el-col>
-            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.lock.allBalanceStr}}</el-col>
+            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.deposite&&dataList.lock.allBalanceStr}}</el-col>
             <el-col :span="4" class="">
               当前锁仓金额
             </el-col>
-            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.lock.nowBalanceStr}}</el-col>
+            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.deposite&&dataList.lock.nowBalanceStr}}</el-col>
             <el-col :span="4" class="">
               已解锁金额
             </el-col>
-            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.lock.unlockBalanceStr}}</el-col>
+            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.deposite&&dataList.lock.unlockBalanceStr}}</el-col>
             <el-col :span="4" class="">
               总奖励金额
             </el-col>
-            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.lock.allInterestStr}}</el-col>
+            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.deposite&&dataList.lock.allInterestStr}}</el-col>
             <el-col :span="4" class="">
               未奖励金额
             </el-col>
-            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.lock.nowInterestStr}}</el-col>
+            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.deposite&&dataList.lock.nowInterestStr}}</el-col>
             <el-col :span="4" class="">
               已奖励金额
             </el-col>
-            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.lock.unlockInterestStr}}</el-col>
+            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.deposite&&dataList.lock.unlockInterestStr}}</el-col>
             <el-col :span="4" class="">
               总锁仓单数
             </el-col>
-            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.lock.allNum}}</el-col>
+            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.deposite&&dataList.lock.allNum}}</el-col>
             <el-col :span="4" class="">
               当前锁仓单数
             </el-col>
-            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.lock.nowNum}}</el-col>
+            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.deposite&&dataList.lock.nowNum}}</el-col>
             <el-col :span="4" class="">
               已解锁单数
             </el-col>
-            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.lock.unlockNum}}</el-col>
+            <el-col :span="4" class="box-right" style="padding-right:30px;">{{dataList.deposite&&dataList.lock.unlockNum}}</el-col>
           </div>
         </el-card>
       </el-col>
@@ -100,7 +100,8 @@
     name: 'weekData',
     data() {
       return {
-        type: window.urlData.type
+        type: window.urlData.type,
+        loading: false
       }
     },
     mounted() {
@@ -118,6 +119,7 @@
           this.loading = false
         }).catch((err) => {
           this.$message.error(err)
+          this.loading = false
         })
       }
     }

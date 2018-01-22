@@ -15,6 +15,7 @@
       </div>
       <div class="func-body">
         <el-table
+          v-loading="loading"
           :data="tableData1"
           style="width: 100%">
           <el-table-column
@@ -66,6 +67,7 @@
       </div>
       <div class="func-body">
         <el-table
+          v-loading="loading"
           :data="tableData"
           style="width: 100%">
           <el-table-column
@@ -117,6 +119,7 @@
     name: 'funcSetting',
     data() {
       return {
+        loading: false,
         lockValue1: 0,
         lockValue: 0,
         rechargeValue: false,
@@ -143,7 +146,6 @@
           switchKey: v === 0 ? this.lockValue1 : this.lockValue,
           status: '0'
         }
-        console.log(obj)
         this.$store.dispatch('getConfigSave', obj).then(() => {
           this.$message.success('修改成功')
         }).catch((err) => {
@@ -151,8 +153,10 @@
         })
       },
       getBathAll() {
+        this.loading = true
         this.$store.dispatch('getBathAll').then(() => {
           this.configData.forEach((v, k) => {
+            this.loading = false
             if (v.type === 0) {
               this.tableData1 = JSON.parse((v.config))
               this.lockValue = String(v.switchKey)
@@ -162,6 +166,7 @@
             }
           })
         }).catch((err) => {
+          this.loading = false
           this.$message.error(err)
         })
       }

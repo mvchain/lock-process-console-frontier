@@ -7,7 +7,7 @@
       </div>
       <el-table
         :data="userList.rows"
-        :loading="loading"
+        v-loading="loading"
         style="width: 100%">
         <el-table-column
           label="级别"
@@ -89,6 +89,7 @@
           this.loading = false
         }).catch((err) => {
           this.$message.error(err)
+          this.loading = false
         })
       },
       handleCurrentChange(v) {

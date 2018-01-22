@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-table
-      :loading="loading"
+      v-loading="loading"
       :data="lockRecordData.list"
       style="width: 100%">
       <el-table-column
@@ -89,6 +89,7 @@
           this.loading = false
         }).catch((err) => {
           this.$message.error(err)
+          this.loading = false
         })
       }
     }

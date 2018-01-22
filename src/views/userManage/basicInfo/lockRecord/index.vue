@@ -1,6 +1,6 @@
 <template>
   <div>
-    <lock-record :keyWord="$route.query.id"></lock-record>
+    <lock-record :keyWord="String($route.query.id)"></lock-record>
   </div>
 </template>
 
@@ -13,7 +13,6 @@
     },
     data() {
       return {
-        loading: false,
         pageNo: 1,
         pageSize: 10
       }

@@ -6,7 +6,7 @@
           <el-button slot="append" icon="el-icon-search" @click="searchHandler(0)"></el-button>
         </el-input>
         <el-table
-          :loading="loading"
+          v-loading="loading"
           :data="transactionData.list"
           style="width: 100%">
           <el-table-column
@@ -53,7 +53,7 @@
           <el-button slot="append" icon="el-icon-search" @click="searchHandler(1)"></el-button>
         </el-input>
         <el-table
-          :loading="loading"
+          v-loading="loading"
           :data="transactionData.list"
           style="width: 100%">
           <el-table-column
@@ -99,7 +99,7 @@
           <el-button slot="append" icon="el-icon-search" @click="searchHandler(2)"></el-button>
         </el-input>
         <el-table
-          :loading="loading"
+          v-loading="loading"
           :data="lockRecordData.list"
           style="width: 100%">
           <el-table-column
@@ -220,6 +220,7 @@
           this.loading = false
         }).catch((err) => {
           this.$message.error(err)
+          this.loading = false
         })
       },
       getLockRecord(v, no, str) {
@@ -228,6 +229,7 @@
           this.loading = false
         }).catch((err) => {
           this.$message.error(err)
+          this.loading = false
         })
       }
     }

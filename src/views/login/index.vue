@@ -30,7 +30,7 @@
         </el-row>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="width:100%;" :loading="loading" @click="handleLogin">
+        <el-button type="primary" style="width:100%;" v-loading="loading" @click="handleLogin">
           登 录
         </el-button>
       </el-form-item>
