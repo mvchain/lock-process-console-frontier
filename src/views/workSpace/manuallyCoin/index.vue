@@ -50,7 +50,7 @@
         <el-table-column
           label="状态">
           <template slot-scope="scope">
-            <span>{{scope.row.status === 0 ? '等待' : scope.row.status === 1 ? '提现中' : '提现完成'}}</span>
+            <span>{{scope.row.status === 0 ? '等待' : scope.row.status === 1 ? '提现中' ? scope.row.status === 2: '提现完成' : '提现失败'}}</span>
           </template>
         </el-table-column>
       </el-table>

@@ -1,7 +1,7 @@
 
 const urlData = {
-  url: 'http://192.168.201.22:8765/api',
-  type: 'NJH',
+  url: 'https://api.mvchain.tech/api',
+  type: 'MVC',
   coin: 'MVC'
 }
 window.urlData = urlData

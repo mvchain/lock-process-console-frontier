@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div style="margin:20px 0 0 20px;">
+      中心钱包余额：{{dataList.balanceStr}}{{type}}
+    </div>
     <el-row>
       <el-col :span="12">
         <el-card class="box-card">
@@ -102,6 +105,11 @@
       ...mapGetters({
         dataList: 'dataList'
       })
+    },
+    data() {
+      return {
+        type: window.urlData.type
+      }
     },
     methods: {
       getAllData() {
