@@ -4,6 +4,7 @@ import store from '../store'
 import { getToken } from '@/utils/auth'
 
 // 创建axios实例
+axios.defaults.withCredentials = true
 const service = axios.create({
   baseURL: window.urlData.url, // api的base_url
   timeout: 15000 // 请求超时时间
