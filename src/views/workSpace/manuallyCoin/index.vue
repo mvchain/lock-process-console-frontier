@@ -1,6 +1,10 @@
 <template>
   <div class="manually-coin">
     <div class="manually-up">
+      <div style="margin:0 0 20px 30px;">
+        <el-button type="primary" @click="submitForm" v-loading="loading">确认提币</el-button>
+        <el-button @click="addAddress">添加地址</el-button>
+      </div>
       <el-form ref="transferDTOS"
                :model="transferDTOS[k]"
                label-width="120px"
@@ -19,10 +23,7 @@
           <el-button @click="delAddress(k)" class="el-icon-circle-close"></el-button>
         </el-form-item>
       </el-form>
-      <div>
-        <el-button type="primary" @click="submitForm" v-loading="loading">确认提币</el-button>
-        <el-button @click="addAddress">添加地址</el-button>
-      </div>
+
     </div>
     <div class="manually-down">
       <el-table
