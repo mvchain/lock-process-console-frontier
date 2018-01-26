@@ -12,6 +12,8 @@
 </template>
 
 <script>
+  import MD5 from 'md5'
+
   export default {
     name: 'changePassword',
     data() {
@@ -27,6 +29,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
+          this.password = new MD5().update(this.password).digest('hex')
           this.$store.dispatch('getChange', { id: this.$route.query.id, password: this.password }).then(() => {
             this.$message({
               type: 'success',
