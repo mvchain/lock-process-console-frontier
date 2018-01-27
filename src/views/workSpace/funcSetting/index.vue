@@ -6,8 +6,8 @@
         <span class="func-title-btn">
           <el-switch
             v-model="lockValue1"
-            active-value="0"
-            inactive-value="1"
+            active-value="1"
+            inactive-value="0"
             active-text="开启提币"
             inactive-text="关闭提币">
           </el-switch>
@@ -59,8 +59,8 @@
           <el-switch
             v-model="lockValue"
             active-text="开启锁仓"
-            active-value="0"
-            inactive-value="1"
+            active-value="1"
+            inactive-value="0"
             inactive-text="关闭锁仓">
           </el-switch>
         </span>
@@ -159,10 +159,10 @@
             this.loading = false
             if (v.type === 0) {
               this.tableData1 = JSON.parse((v.config))
-              this.lockValue = String(v.switchKey)
+              this.lockValue1 = String(v.switchKey)
             } else {
               this.tableData = JSON.parse((v.config))
-              this.lockValue1 = String(v.switchKey)
+              this.lockValue = String(v.switchKey)
             }
           })
         }).catch((err) => {

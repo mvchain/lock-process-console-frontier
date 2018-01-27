@@ -3,6 +3,9 @@
     <div style="margin:20px 0 0 20px;">
       中心钱包余额：{{dataList.balanceStr}}{{type}}
     </div>
+    <div style="margin:20px 0 0 20px;">
+      客户钱包余额：{{dataList.otherBalanceStr}}{{type}}
+    </div>
     <el-row v-loading="loading">
       <el-col :span="12">
         <el-card class="box-card">
