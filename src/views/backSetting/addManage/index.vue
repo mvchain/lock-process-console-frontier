@@ -72,6 +72,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import MD5 from 'md5'
   export default {
     name: 'addManage',
     computed: {
@@ -102,7 +103,10 @@
       submit() {
         this.$refs.userForm.validate((valid) => {
           if (valid) {
-            this.$store.dispatch('setUserList', this.userForm).then((res) => {
+            let copyForm = JSON.stringify(this.userForm)
+            copyForm = JSON.parse(copyForm)
+            copyForm.password = new MD5().update(copyForm.password).digest('hex')
+            this.$store.dispatch('setUserList', copyForm).then((res) => {
               this.$message.success('添加成功')
               this.$refs.userForm.resetFields()
               this.dialogFormVisible = false

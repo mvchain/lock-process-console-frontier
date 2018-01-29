@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import MD5 from 'md5'
 export default {
   name: 'login',
   mounted() {
@@ -92,7 +93,10 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('Login', this.loginForm).then(() => {
+          let copyForm = JSON.stringify(this.loginForm)
+          copyForm = JSON.parse(copyForm)
+          copyForm.password = new MD5().update(copyForm.password).digest('hex')
+          this.$store.dispatch('Login', copyForm).then(() => {
             this.loading = false
             this.$router.push({ path: '/' })
           }).catch(() => {

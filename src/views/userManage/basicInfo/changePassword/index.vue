@@ -30,7 +30,8 @@
           type: 'warning'
         }).then(() => {
           this.password = new MD5().update(this.password).digest('hex')
-          this.$store.dispatch('getChange', { id: this.$route.query.id, password: this.password }).then(() => {
+          const copyForm = new MD5().update(this.password).digest('hex')
+          this.$store.dispatch('getChange', { id: this.$route.query.id, password: copyForm }).then(() => {
             this.$message({
               type: 'success',
               message: '设置成功!'
