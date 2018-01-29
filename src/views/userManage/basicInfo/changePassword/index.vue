@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import MD5 from 'md5'
+  import md5 from 'blueimp-md5'
 
   export default {
     name: 'changePassword',
@@ -29,8 +29,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.password = new MD5().update(this.password).digest('hex')
-          const copyForm = new MD5().update(this.password).digest('hex')
+          const copyForm = md5(md5(this.password) + 'MVC')
           this.$store.dispatch('getChange', { id: this.$route.query.id, password: copyForm }).then(() => {
             this.$message({
               type: 'success',

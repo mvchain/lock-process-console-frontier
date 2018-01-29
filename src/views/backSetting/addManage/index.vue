@@ -72,7 +72,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import MD5 from 'md5'
+  import md5 from 'blueimp-md5'
   export default {
     name: 'addManage',
     computed: {
@@ -105,7 +105,7 @@
           if (valid) {
             let copyForm = JSON.stringify(this.userForm)
             copyForm = JSON.parse(copyForm)
-            copyForm.password = new MD5().update(copyForm.password).digest('hex')
+            copyForm.password = md5(md5(copyForm.password) + 'MVC')
             this.$store.dispatch('setUserList', copyForm).then((res) => {
               this.$message.success('添加成功')
               this.$refs.userForm.resetFields()
@@ -164,7 +164,7 @@
         loading: false,
         pageSize: 10,
         userRules: {
-          name: [{ required: true, trigger: 'blur',message: '真实姓名不能为空' }],
+          name: [{ required: true, trigger: 'blur', message: '真实姓名不能为空' }],
           password: [{ required: true, trigger: 'blur', message: '密码不能为空' }],
           username: [{ required: true, trigger: 'blur', message: '用户名不能为空' }],
           againPassword: [{ required: true, trigger: 'blur', validator: valiAgainPassword }]
