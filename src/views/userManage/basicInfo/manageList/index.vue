@@ -31,6 +31,7 @@
         </template>
       </el-table-column>
       <el-table-column
+        width="400"
         prop="addressEth"
         label="充币地址"
       >
@@ -46,13 +47,13 @@
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
-                <router-link :to="{path: 'rechargeRecord',query: {id:scope.row.id}}">充值记录</router-link>
+                <router-link :to="{path: 'rechargeRecord',query: {id:scope.row.id,type: 'c'}}">充值记录</router-link>
               </el-dropdown-item>
               <el-dropdown-item>
-                <router-link :to="{path: 'withDrawalsRecord',query: {id:scope.row.id}}">提币记录</router-link>
+                <router-link :to="{path: 'withDrawalsRecord',query: {id:scope.row.id,type: 't'}}">提币记录</router-link>
               </el-dropdown-item>
               <el-dropdown-item>
-                <router-link :to="{path: 'lockRecord',query: {id:scope.row.id}}">锁仓记录</router-link>
+                <router-link :to="{path: 'lockRecord',query: {id:scope.row.id, type: 's'}}">锁仓记录</router-link>
               </el-dropdown-item>
               <el-dropdown-item>
                 <router-link :to="{path: 'changePassword',query: {id:scope.row.id}}">密码修改</router-link>

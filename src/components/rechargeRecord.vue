@@ -10,7 +10,7 @@
       >
       </el-table-column>
       <el-table-column
-        prop="createdAt"
+        prop="updatedAt"
         label="时间"
       >
       </el-table-column>
@@ -24,13 +24,15 @@
       </el-table-column>
 
       <el-table-column
+        width="400"
         prop="fromAddress"
         label="转出地址">
       </el-table-column>
       <el-table-column
         label="状态">
         <template slot-scope="scope">
-          <span>{{scope.row.status === 0 ? '等待' : scope.row.status === 1 ? '提现中' : '提现完成'}}</span>
+          <span v-if="$route.query.type === 'c'" >{{scope.row.status === 0 ? '等待' : '成功'}}</span>
+          <span v-if="$route.query.type === 't'" >{{scope.row.status === 0 ? '等待' : scope.row.status === 1 ? '提现中' : '提现完成'}}</span>
         </template>
       </el-table-column>
     </el-table>

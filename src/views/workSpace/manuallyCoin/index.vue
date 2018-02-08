@@ -46,6 +46,7 @@
         </el-table-column>
         <el-table-column
           prop="toAddress"
+          width="500"
           label="转账ID">
         </el-table-column>
         <el-table-column

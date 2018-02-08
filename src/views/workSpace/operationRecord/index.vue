@@ -29,13 +29,14 @@
           </el-table-column>
 
           <el-table-column
+            width="400"
             prop="fromAddress"
             label="转出地址">
           </el-table-column>
           <el-table-column
             label="状态">
             <template slot-scope="scope">
-              <span>{{scope.row.status === 0 ? '等待' : scope.row.status === 1 ? '提现中' ? scope.row.status === 2: '提现完成' : '提现失败'}}</span>
+             <span>{{statusHandler(scope.row.status)}}</span>
             </template>
           </el-table-column>
         </el-table>
@@ -75,13 +76,14 @@
             label="提币金额">
           </el-table-column>
           <el-table-column
+            width="400"
             prop="toAddress"
             label="转入地址">
           </el-table-column>
           <el-table-column
             label="状态">
             <template slot-scope="scope">
-              <span>{{scope.row.status === 0 ? '等待' : scope.row.status === 1 ? '提现中' ? scope.row.status === 2: '提现完成' : '提现失败'}}</span>
+              <span>{{statusHandler(scope.row.status)}}</span>
             </template>
           </el-table-column>
         </el-table>
@@ -108,7 +110,7 @@
           >
           </el-table-column>
           <el-table-column
-            prop="createdAt"
+            prop="updatedAt"
             label="时间"
           >
           </el-table-column>
@@ -184,6 +186,17 @@
       })
     },
     methods: {
+      statusHandler(v) {
+        if (v === 0) {
+          return '等待'
+        } else if (v === 1) {
+          return '提现中'
+        } else if (v === 2) {
+          return '提现完成'
+        } else {
+          return '提现失败'
+        }
+      },
       handleClick(tab) {
         if (tab.index === '0') {
           this.getRecord(tab.index, this.pageNo1, this.searchRecharge)
