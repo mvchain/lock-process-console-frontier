@@ -20,13 +20,13 @@
       </el-table-column>
       <el-table-column
         prop="quantityStr"
-        label="充值金额">
+        :label="$route.query.type == 't'?'提币记录':'充值记录'">
       </el-table-column>
 
       <el-table-column
         width="400"
         prop="fromAddress"
-        label="转出地址">
+        :label="$route.query.type == 't'?'提币地址':'充值地址'">
       </el-table-column>
       <el-table-column
         label="状态">
