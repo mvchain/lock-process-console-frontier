@@ -72,7 +72,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import md5 from 'blueimp-md5'
+  import md5 from 'md5'
   export default {
     name: 'addManage',
     computed: {

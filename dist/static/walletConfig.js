@@ -1,6 +1,6 @@
 
 const urlData = {
-  url: 'https://api.mvchain.tech/api',
+  url: '//47.75.128.58/api',
   type: 'MVC',
   coin: 'MVC'
 }
