@@ -1,5 +1,10 @@
 <template>
   <div class="user-manage">
+    <div>
+      <el-input placeholder="请输入手机号码" v-model="phoneSearch" class="input-with-select">
+        <el-button @click="searchHandler" slot="append" icon="el-icon-search"></el-button>
+      </el-input>
+    </div>
     <el-table
       :data="pageListData.list"
       v-loading="loading"
@@ -99,19 +104,23 @@
       },
       getPageList() {
         this.loading = true
-        this.$store.dispatch('getPageList', `?pageNo=${this.pageNo}&pageSize=${this.pageSize}`).then((res) => {
+        this.$store.dispatch('getPageList', `?pageNo=${this.pageNo}&pageSize=${this.pageSize}&cellphone=${this.phoneSearch}`).then((res) => {
           this.loading = false
         }).catch((err) => {
           this.$message.error(err)
           this.loading = false
         })
+      },
+      searchHandler() {
+        this.getPageList();
       }
     },
     data() {
       return {
         pageNo: 1,
         loading: false,
-        pageSize: 10
+        pageSize: 10,
+        phoneSearch: ''
       }
     }
   }

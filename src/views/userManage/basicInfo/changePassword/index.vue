@@ -12,7 +12,6 @@
 </template>
 
 <script>
-  import md5 from 'blueimp-md5'
 
   export default {
     name: 'changePassword',
@@ -29,8 +28,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          const copyForm = md5(md5(this.password) + 'MVC')
-          this.$store.dispatch('getChange', { id: this.$route.query.id, password: copyForm }).then(() => {
+          this.$store.dispatch('getChange', { id: this.$route.query.id, password: this.password }).then(() => {
             this.$message({
               type: 'success',
               message: '设置成功!'

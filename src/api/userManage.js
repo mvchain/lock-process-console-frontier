@@ -7,7 +7,7 @@ export function pageList(data) {
 }
 export function changeUser(data) {
   return request({
-    url: '/user/list' + data.id,
+    url: '/user/' + data.id,
     method: 'put',
     data
   })
