@@ -1,5 +1,18 @@
 <template>
   <div class="operation-record">
+    <div class="operation-btn">
+      <el-button @click="downData">导出提现</el-button>
+      <el-upload
+        style="margin-top:15px;position: absolute;top:-15px;right:130px;"
+        :action="urlData + '/ethereum/ethereum/import/transaction'"
+        :limit="1"
+        :headers="token"
+        :show-file-list="false"
+        :on-success="handleAvatarSuccess"
+        list-type="picture">
+        <el-button type="primary" >导入地址</el-button>
+      </el-upload>
+    </div>
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="用户充值记录" name="first">
         <el-input v-model="searchRecharge">
@@ -160,13 +173,17 @@
 
 <script>
   import { mapGetters } from 'vuex'
-
+  import { getToken } from '@/utils/auth'
   export default {
     name: 'operationRecord',
     data() {
       return {
         loading: false,
         activeName: 'first',
+        urlData: window.urlData.url,
+        token: {
+          Authorization: getToken()
+        },
         pageNo1: 1,
         pageNo2: 1,
         pageNo3: 1,
@@ -196,6 +213,24 @@
         } else {
           return '提现失败'
         }
+      },
+      handleAvatarSuccess(res, file) {
+        this.$message.success('导入成功')
+      },
+      funDownload(content, filename) {
+        const eleLink = document.createElement('a')
+        eleLink.download = filename
+        eleLink.style.display = 'none'
+        const blob = new Blob([content])
+        eleLink.href = URL.createObjectURL(blob)
+        document.body.appendChild(eleLink)
+        eleLink.click()
+        document.body.removeChild(eleLink)
+      },
+      downData() {
+        this.$store.dispatch('down1Handler').then((res) => {
+          this.funDownload(JSON.stringify(res.data), 'withdraw_' + Date.parse(new Date()) + '.json')
+        }).catch(() => {})
       },
       handleClick(tab) {
         if (tab.index === '0') {

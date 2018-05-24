@@ -1,3 +1,9 @@
 .operation-record{
   padding:10px;
+  .operation-btn{
+    position: absolute;
+    right:65px;
+    top:55px;
+    z-index: 999;
+  }
 }

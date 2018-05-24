@@ -1,4 +1,4 @@
-import { batchTransfer, bathAll, saveConfig, transactions, lockRecord } from '@/api/workSpace'
+import { batchTransfer, bathAll, saveConfig, transactions, lockRecord,down1 } from '@/api/workSpace'
 
 const space = {
   state: {
@@ -68,7 +68,16 @@ const space = {
           reject(error)
         })
       })
-    }
+    },
+    down1Handler: ({ commit, state }) => {
+      return new Promise((resolve, reject) => {
+        down1().then(res => {
+          resolve(res)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
   }
 }
 

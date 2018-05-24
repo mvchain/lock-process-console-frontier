@@ -31,3 +31,9 @@ export function lockRecord(data) {
     method: 'get'
   })
 }
+export function down1() {
+  return request({
+    url: '/ethereum/ethereum/transaction/json',
+    method: 'get'
+  })
+}
