@@ -49,7 +49,7 @@
           <el-table-column
             label="状态">
             <template slot-scope="scope">
-             <span>{{statusHandler(scope.row.status)}}</span>
+              <span>{{scope.row.status === 0 ? '等待' : '完成'}}</span>
             </template>
           </el-table-column>
         </el-table>
