@@ -12,3 +12,9 @@ export function changeUser(data) {
     data
   })
 }
+export function postLocked(data) {
+  return request({
+    url: '/ethereum/ethereum/unlock/' + data,
+    method: 'post'
+  })
+}

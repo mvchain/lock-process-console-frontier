@@ -1,4 +1,4 @@
-import { pageList, changeUser } from '@/api/userManage'
+import { pageList, changeUser, postLocked } from '@/api/userManage'
 
 const manage = {
   state: {
@@ -26,6 +26,15 @@ const manage = {
     getChange({ commit, state }, payload) {
       return new Promise((resolve, reject) => {
         changeUser(payload).then(() => {
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    getLockedHandler({ commit, state }, payload) {
+      return new Promise((resolve, reject) => {
+        postLocked(payload).then(() => {
           resolve()
         }).catch(error => {
           reject(error)

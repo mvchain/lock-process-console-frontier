@@ -122,6 +122,21 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/locked',
+    component: Layout,
+    redirect: '/locked/lock',
+    name: 'userManage',
+    meta: { title: '手动解锁', icon: 'table' },
+    children: [
+      {
+        path: 'lock',
+        name: 'lock',
+        component: _import('locked/index'),
+        meta: { title: '手动解锁', icon: 'table' }
+      }
+    ]
+  },
+  {
     path: '/dataCenter',
     component: Layout,
     redirect: '/dataCenter/totalData',

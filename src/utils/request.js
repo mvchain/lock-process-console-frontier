@@ -28,7 +28,7 @@ service.interceptors.response.use(
   * code为非20000是抛错 可结合自己业务进行修改
   */
     const res = response.data
-    if ((response.request.responseURL.indexOf('/ethereum/ethereum/transaction/json') !== -1)) {
+    if ((response.request.responseURL.indexOf('/ethereum/ethereum/transaction/json') !== -1) ||(response.request.responseURL.indexOf('/ethereum/ethereum/unlock') !== -1)) {
       return response
     }
     if (res.status !== 200) {
