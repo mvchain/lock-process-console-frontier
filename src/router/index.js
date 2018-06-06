@@ -58,6 +58,12 @@ export const constantRouterMap = [
         name: 'manuallyCoin',
         component: _import('workSpace/manuallyCoin/index'),
         meta: { title: '手动提币功能', icon: 'example' }
+      },
+      {
+        path: 'locked',
+        name: 'locked',
+        component: _import('locked/index'),
+        meta: { title: '手动解锁', icon: 'example' }
       }
     ]
   },
@@ -118,21 +124,6 @@ export const constantRouterMap = [
             component: _import('userManage/basicInfo/withDrawalsRecord/index')
           }
         ]
-      }
-    ]
-  },
-  {
-    path: '/locked',
-    component: Layout,
-    redirect: '/locked/lock',
-    name: 'userManage',
-    meta: { title: '手动解锁', icon: 'table' },
-    children: [
-      {
-        path: 'lock',
-        name: 'lock',
-        component: _import('locked/index'),
-        meta: { title: '手动解锁', icon: 'table' }
       }
     ]
   },
