@@ -237,7 +237,7 @@
           this.getRecord(tab.index, this.pageNo1, this.searchRecharge)
         } else if (tab.index === '1') {
           this.getRecord(tab.index, this.pageNo2, this.searchWithdraw)
-        } else {
+        } else if (tab.index === '2') {
           this.getLockRecord(tab.index, this.pageNo3, this.searchLock)
         }
       },
@@ -246,21 +246,21 @@
           this.getRecord(k, this.pageNo1, this.searchRecharge)
         } else if (k === 1) {
           this.getRecord(k, this.pageNo2, this.searchWithdraw)
-        } else {
+        } else if(k === 2) {
           this.getLockRecord(k, this.pageNo3, this.searchLock)
         }
       },
       handleCurrentChange(v) {
         this.pageNo1 = v
-        this.getRecord(0, v)
+        this.getRecord(0, v, this.searchRecharge)
       },
       handleCurrentChange1(v) {
         this.pageNo2 = v
-        this.getRecord(1, v)
+        this.getRecord(1, v, this.searchWithdraw)
       },
       handleCurrentChange2(v) {
-        this.pageNo2 = v
-        this.getLockRecord(this.pageNo3, v)
+        this.pageNo3 = v
+        this.getLockRecord(3, v, this.searchLock)
       },
       getRecord(v, no, str) {
         this.loading = true
